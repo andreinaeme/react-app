@@ -11,10 +11,12 @@ class App extends React.Component {
       fechaLlegada: "",
       fechaSalida: "",
       paises: "",
+      precio: "",
+      habitaciones: "",
     }
   }
 
-  onChange = (e) => {
+  onChangeHandler = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -24,8 +26,8 @@ class App extends React.Component {
     return (
       <div>
         <Header filtros={this.state} />
-        <Filters filtros={this.state} onChange={this.onChange} />
-        <Hotels />
+        <Filters filtros={this.state} onChangeHandler={this.onChangeHandler} />
+        <Hotels filtros={this.state} />
       </div>
     );
   }

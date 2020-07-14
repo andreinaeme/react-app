@@ -27,7 +27,18 @@ module.exports = {
           },
         ],
       },
-      { test: /\.css$/, use: 'css-loader' }
+      { test: /\.css$/, use: 'css-loader' },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              esModule: false,
+            },
+          },
+        ],
+      }
     ],
   },
   plugins: [

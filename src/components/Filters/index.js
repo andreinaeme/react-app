@@ -9,34 +9,43 @@ class Filters extends React.Component {
     }
 
     render(){
-        return(
-            <div>
+            const divStyle = {
+                border: 'none',
+                background: '#3D828B',
+            };
+            return(
+            
+            <div style={divStyle}>
+            
             <input value={this.props.filtros.fechaLlegada} 
-            onChange={this.props.onChange.bind(this)} placeholder= "Fecha de llegada" name="fechaLlegada" id="fechaLlegada" type="date" />
+            onChange={this.props.onChangeHandler.bind(this)} placeholder= "Fecha de llegada" name="fechaLlegada" id="fechaLlegada" type="date" />
             
             <input value={this.props.filtros.fechaSalida} 
-            onChange={this.props.onChange.bind(this)} placeholder= "Fecha de salida " name="fechaSalida" id="fechaSalida" type="date" />
+            onChange={this.props.onChangeHandler.bind(this)} placeholder= "Fecha de salida " name="fechaSalida" id="fechaSalida" type="date" />
             
-            <select onChange={this.props.onChange.bind(this)} value={this.props.filtros.paises} name="paises">
-                <option value="">Todos los países</option>
-                <option value="Ar">Argentina</option>
-                <option value="Br">Brasil</option>
-                <option value="Ur">Uruguai</option>
+            <select onChange={this.props.onChangeHandler.bind(this)}
+             value={this.props.filtros.paises} name="paises">
+                <option value="">Todos los paises</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Brasil">Brasil</option>
+                <option value="Uruguay">Uruguay</option>
             </select>
             
-            <select>
+            <select onChange={this.props.onChangeHandler.bind(this)}
+             value={this.props.filtros.precio} name="precio">
                 <option value="">Cualquier Precio</option>
-                <option value="uno">$</option>
-                <option value="dos">$$</option>
-                <option value="tres">$$$</option>
-                <option value="cuatro">$$$$</option>
+                <option value="1">$</option>
+                <option value="2">$$</option>
+                <option value="3">$$$</option>
+                <option value="4">$$$$</option>
             </select>
             
-            <select>
+            <select onChange={this.props.onChangeHandler.bind(this)}
+             value={this.props.filtros.habitaciones} name= "habitaciones">
                 <option value="">Cualquier Tamaño</option>
-                <option value="uno">1-10 habitaciones</option>
-                <option value="dos">10-20 habitaciones</option>
-                <option value="tres">20 +</option>
+                <option value="pequeño">1-10 habitaciones</option>
+                <option value="mediano">10-20 habitaciones</option>
+                <option value="grande">20 +</option>
             </select>
             </div>
         )

@@ -1,4 +1,5 @@
 import React from "react";
+import './cards.css'; 
 
 class Cards extends React.Component {
 
@@ -11,10 +12,11 @@ class Cards extends React.Component {
         let hotel = this.props.hotel;
         
         return (
-            <div>
+            <div className="mi-clase">
                 <img src={require("../../components/assets" + hotel.photo)}></img>
                 <h1>{hotel.name}</h1>
                 <h3>{hotel.description}</h3>
+                <h3>{hotel.availabilityFrom}</h3>
                 <h3>{hotel.rooms}</h3>
                 <h4>{hotel.city}, {hotel.country}</h4>
                 <h4>{hotel.price}</h4>

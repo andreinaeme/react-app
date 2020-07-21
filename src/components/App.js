@@ -25,6 +25,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+      {/*le estoy pasando un estado al parametro de mi componente.*/}
         <Header filtros={this.state} />
         <Filters filtros={this.state} onChangeHandler={this.onChangeHandler} />
         <Hotels filtros={this.state} />

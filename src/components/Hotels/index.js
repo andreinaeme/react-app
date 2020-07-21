@@ -8,19 +8,84 @@ class Hotels extends React.Component {
     this.state = {
     }
   }
-  render() {
-    let items = hotelsData;
+  filtroDePaises(item) {
     let filtros = this.props.filtros;
 
-    const resultItems = items.filter(item => item.country === filtros.paises);
-    // && item.price.toString() === filtros.precio
+    if (filtros.paises === "") {
+      return true;
+    } else {
+      return item.country === filtros.paises;
+    }
+  };
+
+  filtroDePrecio(item) {
+    let filtros = this.props.filtros;
+
+    if (filtros.precio === "") {
+      return true;
+    } else {
+      return item.price == filtros.precio;
+    }
+  };
+
+  filtroDeHabitaciones(item) {
+    let filtros = this.props.filtros;
+
+    if (filtros.habitaciones === "") {
+      return true;
+    } else {
+      switch (filtros.habitaciones) {
+        case "pequeño":
+          return item.rooms >= 1 && item.rooms <= 10;
+        case "mediano":
+          return item.rooms > 10 && item.rooms <= 20;
+        case "grande":
+          return item.rooms > 20;
+        default:
+          return false;
+      }
+    }
+  };
+
+  filtroDeFechaLlegada(item) {
+    let filtros = this.props.filtros;
+
+    if (filtros.fechaLlegada === "") {
+      return true;
+    } else {
+      let milisegundos = new Date(filtros.fechaLlegada).valueOf();
+      if (item.name === "La Bamba de Areco") {
+        console.log("name: " + item.name);
+        console.log("availabilityFrom: " + item.availabilityFrom);
+        console.log("availabilityTo: " + item.availabilityTo);
+        console.log("milisegundos: " + milisegundos);
+        console.log(filtros.fechaLlegada);
+      }
+      return milisegundos >= item.availabilityFrom && milisegundos <= item.availabilityTo;
+    }
+  };
+
+  filtroDeFechaSalida(item) {
+    let filtros = this.props.filtros;
+
+    if (filtros.fechaSalida === "") {
+      return true;
+    } else {
+      let milisegundos = new Date(filtros.fechaSalida).valueOf();
+      return milisegundos >= item.availabilityFrom && milisegundos <= item.availabilityTo;
+    }
+  };
+
+  render() {
+    let items = hotelsData;
+
+    const resultItems = items.filter(item => this.filtroDePaises(item) && this.filtroDePrecio(item)
+      && this.filtroDeHabitaciones(item) && this.filtroDeFechaSalida(item) && this.filtroDeFechaLlegada(item));
     return (
       <ul>
-        {resultItems.map(function (item, index) {
+     {resultItems.map(function (item, index) {
           return <Cards key={index} hotel={item} />
         })}
-
-        
       </ul>
     )
   }

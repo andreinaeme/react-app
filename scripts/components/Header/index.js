@@ -1,7 +1,3 @@
-import React from "react";
-import style from "./header.css";
-import moment from 'moment';
-
 class Header extends React.Component {
 
     constructor(args) {
@@ -11,11 +7,7 @@ class Header extends React.Component {
     }
 
     render() {
-        const divStyle = {
-            border: 'none',
-            background: '#CDA9C8',
         
-        };
 
         let fechaLlegadaFormateada = moment(this.props.filtros.fechaLlegada);
         fechaLlegadaFormateada = fechaLlegadaFormateada.format('LL');
@@ -31,7 +23,7 @@ class Header extends React.Component {
         }
 
         return (
-            <div style={divStyle}>
+            <div className="encabezado">
                 <h1>Hoteles
                 </h1>
                 <h2> Desde: {fechaLlegadaFormateada} hasta: {fechaSalidaFormateada}</h2>
@@ -40,9 +32,6 @@ class Header extends React.Component {
     }
 
 }
-
-
-export default Header;
 
 
 

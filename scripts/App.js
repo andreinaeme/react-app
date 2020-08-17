@@ -1,8 +1,3 @@
-import React from "react";
-import Filters from "./Filters";
-import Header from "./Header";
-import Hotels from "./Hotels";
-
 class App extends React.Component {
 
   constructor(args) {
@@ -34,6 +29,6 @@ class App extends React.Component {
   }
 };
 
-export default App;
+ReactDOM.render(React.createElement(App, null), document.getElementById('App'));
 
 
